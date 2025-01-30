@@ -76,7 +76,7 @@ Alternatively, you can download and install MongoDB from the MongoDB Download pa
 
 ### Refresh Access Token
 
-**POST** `/api/auth/refresh`
+**GET** `/api/auth/refresh`
 
 This endpoint is used to refresh access token. When the access token expires, you can use the refresh token to obtain a new access token.
 
@@ -92,8 +92,7 @@ This endpoint is used to refresh access token. When the access token expires, yo
 
 ```json
 {
-  "accessToken": "your-new-access-token",
-  "refreshToken": "your-refresh-token"
+  "newAccessToken": "your-new-access-token"
 }
 ```
 

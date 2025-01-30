@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.mykola.thoughtflow.api.dto.security.AuthResponse;
 import ua.mykola.thoughtflow.api.dto.security.LoginRequest;
+import ua.mykola.thoughtflow.api.dto.security.RefreshResponse;
 import ua.mykola.thoughtflow.api.dto.security.RegisterRequest;
 import ua.mykola.thoughtflow.document.User;
 import ua.mykola.thoughtflow.exception.DuplicateException;
@@ -68,15 +69,14 @@ public class AuthService {
                 .build();
     }
 
-    public AuthResponse refreshAccessToken(String refreshToken) {
+    public RefreshResponse refreshAccessToken(String refreshToken) {
         jwtValidator.validateToken(refreshToken);
 
         String username = jwtService.getUsernameFromToken(refreshToken);
-        String accessToken = jwtService.generateAccessToken(username);
+        String newAccessToken = jwtService.generateAccessToken(username);
 
-        return AuthResponse.builder()
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
+        return RefreshResponse.builder()
+                .newAccessToken(newAccessToken)
                 .build();
     }
 }
