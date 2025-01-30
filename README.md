@@ -74,6 +74,29 @@ Alternatively, you can download and install MongoDB from the MongoDB Download pa
 }
 ```
 
+### Refresh Access Token
+
+**POST** `/api/auth/refresh`
+
+This endpoint is used to refresh access token. When the access token expires, you can use the refresh token to obtain a new access token.
+
+**Request body:**
+
+```json
+{
+  "refreshToken": "your-refresh-token"
+}
+```
+
+**Response:**
+
+```json
+{
+  "accessToken": "your-new-access-token",
+  "refreshToken": "your-refresh-token"
+}
+```
+
 ### Create a Post
 
 **POST** `/api/posts`
@@ -93,17 +116,17 @@ Authorization: Bearer `your-access-token`
 **Response:**
 
 ```json
-        {
-            "id": "50a5806f-26ee-419e-9ae6-6be17ca83da8",
-            "title": "MongoDB with Spring Boot",
-            "content": "In this post, we will explore how to integrate MongoDB with Spring Boot.",
-            "author": {
-                "username": "MykolaPR"
-            },
-            "topic": "TECHNOLOGY",
-            "comments": null,
-            "createdAt": "2025-01-29T17:15:43.869"
-        }
+{
+   "id": "50a5806f-26ee-419e-9ae6-6be17ca83da8",
+   "title": "MongoDB with Spring Boot",
+   "content": "In this post, we will explore how to integrate MongoDB with Spring Boot.",
+   "author": {
+       "username": "MykolaPR"
+   },
+   "topic": "TECHNOLOGY",
+   "comments": null,
+   "createdAt": "2025-01-29T17:15:43.869"
+}
 ```
 
 ### Get Posts by User's Favorite Topics
